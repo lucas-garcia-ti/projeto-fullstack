@@ -44,7 +44,7 @@ function App() {
     setMensagem('')
 
     try {
-      const resposta = await fetch('http://localhost:3000/fornecedores', {
+      const resposta = await fetch('/api/fornecedores', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(fornecedor)
@@ -73,7 +73,7 @@ function App() {
     setMensagem('')
 
     try {
-      const resposta = await fetch('http://localhost:3000/produtos', {
+      const resposta = await fetch('/api/produtos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -106,8 +106,8 @@ function App() {
 
     try {
       const [respostaFornecedores, respostaProdutos] = await Promise.all([
-        fetch('http://localhost:3000/fornecedores'),
-        fetch('http://localhost:3000/produtos')
+        fetch('/api/fornecedores'),
+        fetch('/api/produtos')
       ])
 
       const dadosFornecedores = await respostaFornecedores.json()
@@ -130,7 +130,7 @@ function App() {
     }
 
     try {
-      const resposta = await fetch('http://localhost:3000/associacoes', {
+      const resposta = await fetch('/api/associacoes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -156,7 +156,7 @@ function App() {
 
     try {
       const resposta = await fetch(
-        `http://localhost:3000/associacoes/${fornecedorId}/${produtoId}`,
+        `/api/associacoes/${fornecedorId}/${produtoId}`,
         { method: 'DELETE' }
       )
 
