@@ -1,0 +1,157 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+header {
+  background: #1f2937;
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+header p {
+  margin: 0;
+  color: #d1d5db;
+}
+
+main {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #1f2937;
+}
+
+.card p {
+  color: #6b7280;
+  line-height: 1.5;
+  min-height: 70px;
+}
+
+.card button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}.form-container {
+  display: flex;
+  justify-content: center;
+  max-width: 700px;
+}
+
+.formulario {
+  width: 100%;
+  max-width: 600px;
+}
+
+.formulario h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.formulario form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #374151;
+}
+
+.formulario input {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.formulario input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.formulario form button {
+  margin-top: 22px;
+}
+
+.voltar {
+  margin-top: 10px;
+  background: #6b7280 !important;
+}
+
+.voltar:hover {
+  background: #4b5563 !important;
+}
+
+.mensagem {
+  min-height: 0 !important;
+  margin: 15px 0 5px;
+  text-align: center;
+  font-weight: bold;
+  color: #1f2937 !important;
+}.formulario select {
+  width: 100%;
+  padding: 11px;
+  margin: 5px 0 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  font-size: 15px;
+}
+
+.formulario select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.botao-associar {
+  margin-top: 10px;
+  background: #2563eb !important;
+}
+
+.botao-desassociar {
+  margin-top: 10px;
+  background: #dc2626 !important;
+}
+
+.botao-desassociar:hover {
+  background: #b91c1c !important;
+}
