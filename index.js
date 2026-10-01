@@ -18,7 +18,7 @@ const {
 } = require('./src/controllers/AssociacaoController');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 
 // Permite receber requisições do frontend
