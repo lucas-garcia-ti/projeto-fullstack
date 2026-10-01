@@ -1,4 +1,8 @@
 const db = require('../database');
+const {
+    quantidadeEstoqueValida,
+    dataValidadeValida
+} = require('../validacaoProduto');
 
 const cadastrarProduto = (req, res) => {
     const {
@@ -21,6 +25,18 @@ const cadastrarProduto = (req, res) => {
     ) {
         return res.status(400).json({
             mensagem: 'Preencha todos os campos obrigatórios!'
+        });
+    }
+
+    if (!quantidadeEstoqueValida(quantidadeEstoque)) {
+        return res.status(400).json({
+            mensagem: 'A quantidade em estoque deve ser um número inteiro maior ou igual a zero.'
+        });
+    }
+
+    if (!dataValidadeValida(dataValidade)) {
+        return res.status(400).json({
+            mensagem: 'A data de validade deve ser uma data válida no formato AAAA-MM-DD.'
         });
     }
 

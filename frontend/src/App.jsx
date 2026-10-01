@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import './App.css'
+import {
+  quantidadeEstoqueValida,
+  dataValidadeValida
+} from './validacaoProduto'
 
 function App() {
   const [tela, setTela] = useState('inicio')
@@ -71,6 +75,20 @@ function App() {
   const cadastrarProduto = async (evento) => {
     evento.preventDefault()
     setMensagem('')
+
+    if (!quantidadeEstoqueValida(produto.quantidadeEstoque)) {
+      setMensagem(
+        'A quantidade em estoque deve ser um número inteiro maior ou igual a zero.'
+      )
+      return
+    }
+
+    if (!dataValidadeValida(produto.dataValidade)) {
+      setMensagem(
+        'A data de validade deve ser uma data válida no formato AAAA-MM-DD.'
+      )
+      return
+    }
 
     try {
       const resposta = await fetch('/api/produtos', {
@@ -267,6 +285,13 @@ function App() {
 
               <label>Quantidade em Estoque</label>
               <input type="number" name="quantidadeEstoque"
+                min="0" step="1" required
+                onInvalid={(evento) => {
+                  evento.preventDefault()
+                  setMensagem(
+                    'A quantidade em estoque deve ser um número inteiro maior ou igual a zero.'
+                  )
+                }}
                 value={produto.quantidadeEstoque}
                 onChange={atualizarProduto} />
 
@@ -276,6 +301,13 @@ function App() {
 
               <label>Data de Validade</label>
               <input type="date" name="dataValidade"
+                required
+                onInvalid={(evento) => {
+                  evento.preventDefault()
+                  setMensagem(
+                    'A data de validade deve ser uma data válida no formato AAAA-MM-DD.'
+                  )
+                }}
                 value={produto.dataValidade}
                 onChange={atualizarProduto} />
 
