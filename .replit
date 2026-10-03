@@ -55,7 +55,8 @@ localPort = 5000
 externalPort = 80
 
 [deployment]
-deploymentTarget = "cloudrun"
+deploymentTarget = "autoscale"
+build = ["sh", "-c", "npm --prefix frontend ci && npm --prefix frontend run build"]
 
 [deployment.run]
 args = ["sh", "-c", "/nix/store/1lagpgadaybvs1n2312gysg2phjk89y8-nodejs-20.20.0-wrapped/bin/node $file"]
