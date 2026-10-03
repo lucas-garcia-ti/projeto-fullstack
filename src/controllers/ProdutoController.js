@@ -116,7 +116,43 @@ const listarProdutos = (req, res) => {
     );
 };
 
+const listarProdutosEstoqueBaixo = (req, res) => {
+    db.all(
+        'SELECT * FROM produtos WHERE quantidadeEstoque <= 5 ORDER BY nome',
+        [],
+        (erro, produtos) => {
+            if (erro) {
+                return res.status(500).json({
+                    mensagem: 'Erro ao listar produtos com estoque baixo!'
+                });
+            }
+
+            return res.status(200).json(produtos);
+        }
+    );
+};
+
+const listarProdutosProximosVencimento = (req, res) => {
+    db.all(
+        `SELECT * FROM produtos
+         WHERE date(dataValidade) BETWEEN date('now') AND date('now', '+30 days')
+         ORDER BY dataValidade, nome`,
+        [],
+        (erro, produtos) => {
+            if (erro) {
+                return res.status(500).json({
+                    mensagem: 'Erro ao listar produtos próximos do vencimento!'
+                });
+            }
+
+            return res.status(200).json(produtos);
+        }
+    );
+};
+
 module.exports = {
     cadastrarProduto,
-    listarProdutos
+    listarProdutos,
+    listarProdutosEstoqueBaixo,
+    listarProdutosProximosVencimento
 };

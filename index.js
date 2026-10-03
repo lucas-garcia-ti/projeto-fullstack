@@ -10,7 +10,9 @@ const {
 
 const {
     cadastrarProduto,
-    listarProdutos
+    listarProdutos,
+    listarProdutosEstoqueBaixo,
+    listarProdutosProximosVencimento
 } = require('./src/controllers/ProdutoController');
 
 const {
@@ -38,6 +40,8 @@ app.get(['/fornecedores', '/api/fornecedores'], listarFornecedores);
 
 // Produtos
 app.post(['/produtos', '/api/produtos'], cadastrarProduto);
+app.get('/api/produtos/estoque-baixo', listarProdutosEstoqueBaixo);
+app.get('/api/produtos/proximos-vencimento', listarProdutosProximosVencimento);
 app.get(['/produtos', '/api/produtos'], listarProdutos);
 
 // Associação fornecedor x produto
